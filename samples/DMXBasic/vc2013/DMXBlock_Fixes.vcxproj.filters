@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Blocks">
+      <UniqueIdentifier>{5F0E489E-C1CB-4207-B600-3C53373BDDB0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\Cinder-DMX">
+      <UniqueIdentifier>{B65510EC-09EC-45BA-ABED-AE229A6F1123}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\Cinder-DMX\src">
+      <UniqueIdentifier>{69392822-FA65-472B-9BA3-24ABB3D5D04D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Blocks\Cinder-DMX\src\dmx">
+      <UniqueIdentifier>{BF736E41-38BB-4DC0-B8ED-04F2D9EA159E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\DMXBlock_FixesApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClInclude Include="..\include\Resources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClCompile Include="..\..\..\..\..\..\..\Cinder\blocks\Cinder-DMX\src\dmx\EnttecDevice.cpp">
+      <Filter>Blocks\Cinder-DMX\src\dmx</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\..\..\..\Cinder\blocks\Cinder-DMX\src\dmx\Utilities.cpp">
+      <Filter>Blocks\Cinder-DMX\src\dmx</Filter>
+    </ClCompile>
+    <ClInclude Include="..\..\..\..\..\..\..\Cinder\blocks\Cinder-DMX\src\dmx\EnttecDevice.h">
+      <Filter>Blocks\Cinder-DMX\src\dmx</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\..\..\..\Cinder\blocks\Cinder-DMX\src\dmx\Utilities.h">
+      <Filter>Blocks\Cinder-DMX\src\dmx</Filter>
+    </ClInclude>
+    <ClCompile Include="..\src\DMXBasicApp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\Resources.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Resources.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
