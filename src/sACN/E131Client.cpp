@@ -207,8 +207,18 @@ bool E131Client::shouldSendData(float iTime) {
 
 void E131Client::sendDMX() {
 
-  _socket->send(asio::buffer(sac_packet, packet_length));
-  universeSequenceNum.at(_universe) = universeSequenceNum.at(_universe) + 1;
+  // Handle exceptions
+  try {
+    _socket->send(asio::buffer(sac_packet, packet_length));
+    universeSequenceNum.at(_universe) = universeSequenceNum.at(_universe) + 1;
+
+  } catch (std::exception &e) {
+
+    if (!loggedException) {
+      CI_LOG_W("Could not send sACN data - are you plugged into the device?");
+      loggedException = true;
+    }
+  }
 
   // Increment current universe counter.
 }
