@@ -28,7 +28,7 @@ public:
   void setPriority(int priority);
   void setCid(const std::vector<char> cid);
   void setSourceName(std::string name);
-	bool isConnected(){ return _isConnected; }
+  bool isConnected() { return _isConnected; }
 
 private:
   void connectUDP();
@@ -39,7 +39,7 @@ private:
   bool shouldSendData(float iTimeSinceDataSent);
 
   // BIG ENDIAN
-	std::array<char, 638> sac_packet = { {
+  std::array<char, 638> sac_packet = {{
       // ROOT LAYER (RLP)
       0x00, 0x10,                   // Define RLP Preamble Size
       0x00, 0x00,                   // RLP Post amble size
@@ -79,7 +79,7 @@ private:
       0x02, 0x01, // Indicates 1+the number of slots in packet
       0x00,       // DMX start code (0 is standard)
       char(512)   // DMX payload (all 512 channels)
-	} };
+  }};
 
   int packet_length = 638; // Length when all 512 DMX channels are sent
   int destPort = 5568;     // Default port for sACN protocol!
@@ -100,6 +100,8 @@ private:
 
   float elapsedTime = 0;
   bool udpSetup = false;
+
+  bool loggedException = false;
 
   std::string ipAddress;
   std::shared_ptr<asio::ip::udp::socket> _socket;
