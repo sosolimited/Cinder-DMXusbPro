@@ -66,12 +66,12 @@ void E131Client::setChannel(int channel, int value, int universe) {
 
   setUniverse(universe);
 
-  if ((channel > 0) && (channel < 512)) {
+	if ((channel >= 0) && (channel < 512)) {
 
     sac_packet.at(126 + channel) = char(value);
 
   } else {
-    CI_LOG_E("Channel must be between 1 and 512 for DMX protocol.");
+    CI_LOG_E("Channel must be between 1 and 512 for DMX protocol. " << channel);
   }
 }
 
