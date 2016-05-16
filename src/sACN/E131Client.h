@@ -37,7 +37,13 @@ private:
   void setLengthFlags();
 
   bool shouldSendData(float iTimeSinceDataSent);
-
+	
+	// Data structure to store payload and sequenece num for each universe
+	struct UniverseData {
+		char universeSequenceNum;
+		std::array<char, 512> payload;
+	};
+	
   // BIG ENDIAN
   std::array<char, 638> sac_packet = {{
       // ROOT LAYER (RLP)
@@ -80,7 +86,7 @@ private:
       0x00,       // DMX start code (0 is standard)
       char(512)   // DMX payload (all 512 channels)
   }};
-
+	
   int packet_length = 638; // Length when all 512 DMX channels are sent
   int destPort = 5568;     // Default port for sACN protocol!
   int priority = 100;
@@ -106,7 +112,6 @@ private:
   std::string ipAddress;
   std::shared_ptr<asio::ip::udp::socket> _socket;
 
-  int _universe = 1;
-  std::map<int, char> universeSequenceNum;
+	std::map<int, UniverseData> universePackets;
 };
 }
