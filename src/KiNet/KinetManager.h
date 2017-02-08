@@ -30,7 +30,7 @@ public:
 	void setColor(ci::vec3 iColor);
 	void setColor(ci::vec3 color, std::string iAddress, int iPort = -1, int iLight = -1);
 
-  void enableAutoSending(bool iEnable); // Whether or not data is automatically
+	void enableAutoSending(bool iEnable){ autoSendingEnabled = iEnable; } // Whether or not data is automatically
   // sent each update frame
   void
   setFramerate(float iFPS); // Data sending framerate, by default this is 30 fps
