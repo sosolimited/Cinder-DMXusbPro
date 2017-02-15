@@ -56,12 +56,12 @@ void KinetPowerSupply::connectUDP() {
       _udpSocket = make_shared<udp::socket>(app->io_service());
       _udpSocket->connect(endpoint, errCode);
 
-      if (!errCode) {
+      if (!errCode && _udpSocket) {
         CI_LOG_I("Connected to socket!");
         udpSetup = true;
         _isConnected = true;
       } else {
-        CI_LOG_E("Error connceting to socket, error code: " << errCode);
+        CI_LOG_E("Error connecting to socket, error code: " << errCode);
       }
 
     } catch (std::exception &e) {
@@ -115,18 +115,27 @@ vector<shared_ptr<KinetStrand>> KinetPowerSupply::getStrands() {
 // Call send kinet on all KinetStrands!
 void KinetPowerSupply::sendKinet() {
 
-  if (!loggedFailure) {
+  if (!loggedFailure && udpSetup && _udpSocket) {
 
     for (auto strand : strands) {
-      strand->sendKinet();
+			try {
+				strand->sendKinet();
+				
+			} catch (std::exception& e){
+				cerr << "caught exception sending strand kinet for ip " << ipAddress << " " << e.what() << endl;
+			}
     }
 
-    if (udpSetup) {
-
-      // Sending sync packet
-      _udpSocket->send(asio::buffer(sync_packet, sync_packet.size()));
-    }
-  }
+		try {
+			
+			// Sending sync packet after all strand packets
+			if (_udpSocket){
+				_udpSocket->send(asio::buffer(sync_packet, sync_packet.size()));
+			}
+		} catch (std::exception& e){
+			cerr << "caught exception sending sync packet for ip address " << ipAddress << " " << e.what() << endl;
+		}
+	}
 }
 
 // Return ip address
