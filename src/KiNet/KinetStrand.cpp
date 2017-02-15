@@ -110,7 +110,9 @@ void KinetStrand::sendKinet() {
   // (Extra data in kinet_total is ignored)
   //  int dataLength = 24 + payloadLength;
 
-  _udpSocket->send(asio::buffer(kinet_total, kinet_total.size()));
+	if (_udpSocket){
+		_udpSocket->send(asio::buffer(kinet_total, kinet_total.size()));
+	}
 }
 
 // Create and add a new light object
