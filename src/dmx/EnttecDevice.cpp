@@ -9,6 +9,8 @@
 #include "cinder/app/App.h"
 #include "cinder/Log.h"
 
+#include <array>
+
 using namespace ci;
 using namespace ci::app;
 using namespace std;

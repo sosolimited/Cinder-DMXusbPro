@@ -8,6 +8,11 @@
 #pragma once
 
 #include "cinder/Serial.h"
+#include "cinder/Vector.h"
+#include "cinder/Color.h"
+
+#include <array>
+
 namespace dmx {
 
 /// Buffer to simplify building up color data for DMX transmission.
